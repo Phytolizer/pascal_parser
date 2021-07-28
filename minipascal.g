@@ -39,7 +39,7 @@ variable_declaration_part:
         )*
     )?
     {
-        if ($# == -1)
+        if (!get_if<VariableDeclarationPart>(&$$))
         {
             $$ = VariableDeclarationPart{};
         }
@@ -115,11 +115,17 @@ procedure_declaration_part:
         {
             if (!get_if<ProcedureDeclarationPart>(&$$))
             {
-                $$ = ProcedureDeclarationPart{ .procedures = {} };
+                $$ = ProcedureDeclarationPart{};
             }
             get_if<ProcedureDeclarationPart>(&$$)->procedures.emplace_back(std::move(*get_if<ProcedureDeclaration>(&$0)));
         }
     )*
+    {
+        if (!get_if<ProcedureDeclarationPart>(&$$))
+        {
+            $$ = ProcedureDeclarationPart{};
+        }
+    }
     ;
 
 procedure_declaration: 
@@ -417,9 +423,9 @@ sign:
         }
     )?
     {
-        if ($# == 0)
+        if (!get_if<Sign>(&$$))
         {
-            $$ = Sign{ .value = {} };
+            $$ = Sign{};
         }
     }
     ;

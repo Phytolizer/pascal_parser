@@ -7,7 +7,7 @@
 #include "minipascal.hpp"
 using namespace boost::variant2;
 
-#include "dparse.h"
+#include "dparse.hpp"
 
 D_Reduction d_reduction_0_minipascal = {1, 0, NULL, NULL, 0, 0, 0, 0, -1, 0, NULL};
 int d_final_reduction_code_1_1_minipascal(void *_ps, void **_children, int _n_children, int _offset, D_Parser *_parser) { 
@@ -28,7 +28,7 @@ int d_final_reduction_code_2_2_minipascal(void *_ps, void **_children, int _n_ch
 
 D_Reduction d_reduction_2_minipascal = {3, 2, NULL, d_final_reduction_code_2_2_minipascal, 0, 0, 0, 0, 0, 0, NULL};
 int d_final_reduction_code_3_3_minipascal(void *_ps, void **_children, int _n_children, int _offset, D_Parser *_parser) { 
-        if ((_n_children) == -1)
+        if (!get_if<VariableDeclarationPart>(&(D_PN(_ps, _offset)->user)))
         {
             (D_PN(_ps, _offset)->user) = VariableDeclarationPart{};
         }
@@ -101,13 +101,20 @@ int d_final_reduction_code_16_20_minipascal(void *_ps, void **_children, int _n_
       (void)_children; (void)_n_children;  (void)_parser; return 0;}
 
 D_Reduction d_reduction_20_minipascal = {1, 16, NULL, d_final_reduction_code_16_20_minipascal, 0, 0, 0, 0, 0, 0, NULL};
-D_Reduction d_reduction_21_minipascal = {1, 17, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL};
+int d_final_reduction_code_17_21_minipascal(void *_ps, void **_children, int _n_children, int _offset, D_Parser *_parser) { 
+        if (!get_if<ProcedureDeclarationPart>(&(D_PN(_ps, _offset)->user)))
+        {
+            (D_PN(_ps, _offset)->user) = ProcedureDeclarationPart{};
+        }
+      (void)_children; (void)_n_children;  (void)_parser; return 0;}
+
+D_Reduction d_reduction_21_minipascal = {1, 17, NULL, d_final_reduction_code_17_21_minipascal, 0, 0, 0, 0, 0, 0, NULL};
 D_Reduction d_reduction_22_minipascal = {2, 18, NULL, NULL, 0, 0, 0, 0, -1, 0, NULL};
 D_Reduction d_reduction_23_minipascal = {0, 18, NULL, NULL, 0, 0, 0, 0, -1, 0, NULL};
 int d_final_reduction_code_19_24_minipascal(void *_ps, void **_children, int _n_children, int _offset, D_Parser *_parser) { 
             if (!get_if<ProcedureDeclarationPart>(&(D_PN(_ps, _offset)->user)))
             {
-                (D_PN(_ps, _offset)->user) = ProcedureDeclarationPart{ .procedures = {} };
+                (D_PN(_ps, _offset)->user) = ProcedureDeclarationPart{};
             }
             get_if<ProcedureDeclarationPart>(&(D_PN(_ps, _offset)->user))->procedures.emplace_back(std::move(*get_if<ProcedureDeclaration>(&(D_PN(_children[0], _offset)->user))));
           (void)_children; (void)_n_children;  (void)_parser; return 0;}
@@ -358,9 +365,9 @@ int d_final_reduction_code_49_75_minipascal(void *_ps, void **_children, int _n_
 
 D_Reduction d_reduction_75_minipascal = {1, 49, NULL, d_final_reduction_code_49_75_minipascal, 0, 0, 0, 0, 0, 0, NULL};
 int d_final_reduction_code_50_76_minipascal(void *_ps, void **_children, int _n_children, int _offset, D_Parser *_parser) { 
-        if ((_n_children) == 0)
+        if (!get_if<Sign>(&(D_PN(_ps, _offset)->user)))
         {
-            (D_PN(_ps, _offset)->user) = Sign{ .value = {} };
+            (D_PN(_ps, _offset)->user) = Sign{};
         }
       (void)_children; (void)_n_children;  (void)_parser; return 0;}
 

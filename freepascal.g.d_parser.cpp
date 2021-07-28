@@ -9,7 +9,7 @@
 
 
 #line 12 "freepascal.g.d_parser.cpp"
-#include "dparse.h"
+#include "dparse.hpp"
 
 D_Reduction d_reduction_0_pascal = {1, 0, NULL, NULL, 0, 0, 0, 0, -1, 0, NULL};
 D_Reduction d_reduction_1_pascal = {1, 1, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL};

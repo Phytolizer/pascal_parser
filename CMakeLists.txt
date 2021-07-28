@@ -1,4 +1,7 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.16)
+
+include_directories(/usr/local/include)
+
 project(
   pascal
   VERSION 0.1.0

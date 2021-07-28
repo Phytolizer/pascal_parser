@@ -5,7 +5,7 @@
 
 extern "C"
 {
-#include "dparse.h"
+#include "dparse.hpp"
 }
 
 extern D_ParserTables parser_tables_pascal;
